@@ -1,8 +1,0 @@
-{
-"name":"Pediatric Calculator Pro",
-"short_name":"PedCalc",
-"display":"standalone",
-"start_url":"./",
-"background_color":"#ffffff",
-"theme_color":"#0d6efd"
-}
