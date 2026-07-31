@@ -1,22 +1,97 @@
+
 <!doctype html>
 <html lang="id">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Pediatric Calculator Pro</title>
+<title>Pediatric Calculator Pro UI9 Enterprise</title>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-<link href="css/style.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<style>
+body{background:#eef4fb;font-family:Inter,Arial,sans-serif}
+.sidebar{position:fixed;left:0;top:0;bottom:0;width:250px;background:#fff;box-shadow:0 4px 18px rgba(0,0,0,.08);padding:18px}
+.logo{width:150px;display:block;margin:auto}
+.navbtn{display:flex;gap:10px;padding:12px 14px;border-radius:14px;color:#234;text-decoration:none;margin:6px 0}
+.navbtn:hover,.active{background:#2563eb;color:#fff}
+.main{margin-left:270px;padding:22px}
+.cardx{background:#fff;border:none;border-radius:22px;box-shadow:0 8px 20px rgba(0,0,0,.08)}
+.metric{font-size:2rem;font-weight:700}
+.fab{position:fixed;right:24px;bottom:24px;width:66px;height:66px;border-radius:50%}
+@media(max-width:900px){.sidebar{display:none}.main{margin:0}}
+</style>
 </head>
 <body>
-<div class="container py-4">
-<h2>🩺 Pediatric Calculator Pro</h2>
-<p>Starter GitHub Pages.</p>
+<div class="sidebar">
+<img src="logo.png" class="logo">
+<h5 class="text-center mt-2">Pediatric Calculator Pro</h5>
+<a class="navbtn active"><i class="bi bi-house"></i>Dashboard</a>
+<a class="navbtn"><i class="bi bi-calculator"></i>Kalkulator</a>
+<a class="navbtn"><i class="bi bi-heart-pulse"></i>NICU Dashboard</a>
+<a class="navbtn"><i class="bi bi-capsule"></i>Obat</a>
+<a class="navbtn"><i class="bi bi-graph-up"></i>Growth Chart</a>
+<a class="navbtn"><i class="bi bi-file-earmark-pdf"></i>Laporan PDF</a>
+<a class="navbtn"><i class="bi bi-gear"></i>Pengaturan</a>
+</div>
+
+<div class="main">
+<div class="d-flex gap-3 align-items-center mb-3">
+<div class="cardx flex-grow-1 p-2">
+<div class="input-group">
+<span class="input-group-text bg-white border-0"><i class="bi bi-search"></i></span>
+<input class="form-control border-0" placeholder="Cari pasien, obat, atau kalkulator...">
+<button class="btn btn-light"><i class="bi bi-qr-code-scan"></i></button>
+</div></div>
+<div class="cardx p-3">👨‍⚕️ Dr. Andi Pratama</div>
+</div>
+
 <div class="row g-3">
-<div class="col-md-4"><div class="card p-3"><h5>Maintenance</h5><a class="btn btn-primary" href="#">Segera hadir</a></div></div>
-<div class="col-md-4"><div class="card p-3"><h5>Neonatus Pro</h5><a class="btn btn-primary" href="#">Segera hadir</a></div></div>
-<div class="col-md-4"><div class="card p-3"><h5>Fluid Balance</h5><a class="btn btn-primary" href="#">Segera hadir</a></div></div>
+<div class="col-lg-8">
+<div class="cardx p-4">
+<div class="d-flex justify-content-between">
+<div><h3>Bayi A</h3><p>No RM 123456 · DOL 3 · GA 32 minggu · BB 1450 g</p><span class="badge bg-success">Stabil</span></div>
+<button class="btn btn-outline-primary">Lihat Detail</button>
 </div>
 </div>
-<script src="js/app.js"></script>
-</body>
-</html>
+</div>
+<div class="col-lg-4">
+<div class="cardx p-4">
+<h5>🚨 Clinical Alerts</h5>
+<ul><li>Evaluasi elektrolit.</li><li>Pantau output urin.</li><li>Review GIR.</li></ul>
+</div>
+</div>
+
+<div class="col-md-3"><div class="cardx p-3 text-center"><div class="metric">160</div>Maintenance</div></div>
+<div class="col-md-3"><div class="cardx p-3 text-center"><div class="metric">7.8</div>GIR</div></div>
+<div class="col-md-3"><div class="cardx p-3 text-center"><div class="metric">+35</div>Fluid Balance</div></div>
+<div class="col-md-3"><div class="cardx p-3 text-center"><div class="metric">2.6</div>Output Urin</div></div>
+
+<div class="col-lg-8">
+<div class="cardx p-3">
+<h5>📈 Tren Berat Badan</h5>
+<canvas id="c"></canvas>
+</div>
+</div>
+<div class="col-lg-4">
+<div class="cardx p-3">
+<h5>Quick Actions</h5>
+<div class="d-grid gap-2">
+<button class="btn btn-primary">Hitung Cairan</button>
+<button class="btn btn-outline-primary">Neonatus Pro</button>
+<button class="btn btn-outline-primary">GIR</button>
+<button class="btn btn-outline-primary">Growth Chart</button>
+<button class="btn btn-success">Export PDF</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<button class="btn btn-primary fab shadow-lg"><i class="bi bi-plus-lg fs-3"></i></button>
+<script>
+new Chart(document.getElementById('c'),{
+type:'line',
+data:{labels:['26 Jul','27','28','29','30','31','1 Agu'],
+datasets:[{label:'Berat (g)',data:[1180,1210,1250,1320,1300,1380,1450],borderColor:'#2563eb',fill:false}]}
+});
+</script>
+</body></html>
